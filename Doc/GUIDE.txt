@@ -1,0 +1,163 @@
+GUIDE
+Phân tích các endpoint cần thiết
+1. Quy trình lập kế hoạch sản xuất
+Thu thập thông tin: Lấy dữ liệu từ bán hàng, kho, sản xuất.
+GET /sales-orders (lấy thông tin đơn hàng)
+GET /inventory (lấy thông tin tồn kho)
+GET /production-capacity (lấy năng lực sản xuất)
+Dự báo nhu cầu: Dự báo dựa trên dữ liệu lịch sử.
+POST /demand-forecast (tạo dự báo nhu cầu sản phẩm)
+GET /demand-forecast (lấy dữ liệu dự báo)
+Lập kế hoạch sản xuất: Tạo kế hoạch sản xuất.
+POST /production-plan (tạo kế hoạch sản xuất)
+GET /production-plan (lấy danh sách kế hoạch sản xuất)
+PUT /production-plan/:id (cập nhật kế hoạch sản xuất)
+DELETE /production-plan/:id (xóa kế hoạch sản xuất)
+Phân bổ nguồn lực: Phân bổ nhân lực, máy móc, nguyên vật liệu.
+POST /resource-allocation (tạo phân bổ nguồn lực)
+GET /resource-allocation (lấy thông tin phân bổ)
+PUT /resource-allocation/:id (cập nhật phân bổ)
+Kiểm soát tiến độ: Giám sát và điều chỉnh kế hoạch.
+GET /production-plan/progress (theo dõi tiến độ sản xuất)
+PUT /production-plan/progress/:id (cập nhật tiến độ sản xuất)
+2. Quy trình quản lý nguyên vật liệu
+Kiểm tra tồn kho:
+GET /inventory (lấy danh sách tồn kho)
+GET /inventory/:id (kiểm tra chi tiết nguyên vật liệu cụ thể)
+Lập kế hoạch mua hàng:
+POST /purchase-plan (lập kế hoạch mua hàng)
+GET /purchase-plan (lấy kế hoạch mua hàng)
+Quản lý đặt hàng:
+POST /purchase-orders (tạo đơn đặt hàng)
+GET /purchase-orders (lấy thông tin đơn đặt hàng)
+PUT /purchase-orders/:id (cập nhật đơn đặt hàng)
+DELETE /purchase-orders/:id (xóa đơn đặt hàng)
+3. Quy trình quản lý mua hàng
+Yêu cầu mua hàng:
+POST /purchase-requests (tạo yêu cầu mua hàng)
+GET /purchase-requests (lấy thông tin yêu cầu mua hàng)
+Đàm phán và phê duyệt:
+PUT /purchase-orders/:id/approve (phê duyệt đơn hàng)
+Theo dõi và nhận hàng:
+PUT /purchase-orders/:id/receive (cập nhật trạng thái nhận hàng)
+Thanh toán:
+POST /payments (tạo thanh toán)
+GET /payments (lấy danh sách thanh toán)
+4. Quy trình quản lý bán hàng
+Tiếp nhận đơn hàng:
+POST /sales-orders (tạo đơn hàng)
+GET /sales-orders (lấy danh sách đơn hàng)
+GET /sales-orders/:id (xem chi tiết đơn hàng)
+Xuất kho và giao hàng:
+PUT /sales-orders/:id/ship (xuất kho và giao hàng)
+PUT /sales-orders/:id/complete (cập nhật trạng thái hoàn thành đơn hàng)
+Quản lý công nợ:
+GET /accounts-receivable (lấy danh sách công nợ)
+PUT /accounts-receivable/:id/pay (cập nhật trạng thái thanh toán công nợ)
+5. Quy trình quản lý tài chính
+Ghi nhận doanh thu và chi phí:
+GET /financial-records (lấy danh sách doanh thu và chi phí)
+POST /financial-records (ghi nhận chi phí hoặc doanh thu)
+Quản lý ngân sách:
+GET /budget (lấy thông tin ngân sách)
+PUT /budget/:id (cập nhật ngân sách)
+Quản lý thanh toán và công nợ:
+GET /accounts-payable (lấy danh sách các khoản phải trả)
+PUT /accounts-payable/:id/pay (cập nhật trạng thái thanh toán)
+6. Quy trình quản lý nhân sự
+Tuyển dụng:
+POST /employees (tạo thông tin nhân viên mới)
+GET /employees (lấy danh sách nhân viên)
+GET /employees/:id (lấy thông tin chi tiết nhân viên)
+Chấm công và tính lương:
+POST /time-logs (ghi nhận thời gian làm việc)
+GET /time-logs (lấy danh sách thời gian làm việc)
+POST /payroll (tính lương và ghi nhận lương)
+Đào tạo và phát triển:
+POST /training-sessions (tạo chương trình đào tạo)
+GET /training-sessions (lấy danh sách chương trình đào tạo)
+7. Quy trình quản lý chất lượng sản phẩm
+Định nghĩa tiêu chuẩn chất lượng:
+POST /quality-standards (tạo tiêu chuẩn chất lượng)
+GET /quality-standards (lấy danh sách tiêu chuẩn chất lượng)
+Kiểm tra chất lượng:
+POST /quality-checks (tạo kiểm tra chất lượng)
+GET /quality-checks (lấy danh sách kiểm tra chất lượng)
+8. Quy trình quản lý bảo trì thiết bị
+Lập kế hoạch bảo trì:
+POST /maintenance-plans (tạo kế hoạch bảo trì)
+GET /maintenance-plans (lấy kế hoạch bảo trì)
+Theo dõi bảo trì và sự cố:
+POST /maintenance-reports (báo cáo sự cố và tình trạng thiết bị)
+GET /maintenance-reports (lấy danh sách báo cáo bảo trì)
+9. Quy trình quản lý dự án
+Lập kế hoạch dự án:
+POST /projects (tạo dự án mới)
+GET /projects (lấy danh sách dự án)
+Theo dõi tiến độ và chi phí:
+GET /projects/:id/progress (theo dõi tiến độ dự án)
+PUT /projects/:id/progress (cập nhật tiến độ dự án)
+10. Quy trình quản lý chuỗi cung ứng
+Lập kế hoạch chuỗi cung ứng:
+POST /supply-chain-plan (tạo kế hoạch chuỗi cung ứng)
+GET /supply-chain-plan (lấy danh sách kế hoạch chuỗi cung ứng)
+Quản lý nhà cung cấp:
+POST /suppliers (tạo nhà cung cấp mới)
+GET /suppliers (lấy danh sách nhà cung cấp)
+GET /suppliers/:id (lấy thông tin chi tiết nhà cung cấp)
+=================
+Khởi tạo dự án
+1. Tạo
+"mkdir production-planning-system"
+"cd production-planning-system"
+2. Khởi tạo npm
+"npm init -y"
+3. Cài đặt package cần thiết
+"npm install express sequelize mssql body-parser cors dotenv swagger-ui-express"
+"npm install --save-dev nodemon"
+express: Framework Web cho Node.js.
+sequelize: ORM (Object Relational Mapping) để làm việc với cơ sở dữ liệu.
+mssql: Thư viện kết nối với SQL Server.
+body-parser: Xử lý dữ liệu từ yêu cầu (request body).
+cors: Xử lý CORS (Cross-Origin Resource Sharing).
+dotenv: Quản lý các biến môi trường.
+swagger-ui-express: Hiển thị Swagger UI.
+4. Tạo file config env
+"touch .env"
+5 Tạo model với sequelize
+npm install --save sequelize-cli
+npm install --save sequelize-auto
+npm install --save mysql2 # Nếu sử dụng MySQL, hoặc mssql nếu sử dụng SQL Server
+Tạo file config.json
+chạy lệnh
+npx sequelize-auto -o "./src/models" -d ProductionPlanning -h localhost -u root -p 1433 -x password -e mssql
+=======================
+Cấu trúc
+production-planning-system/
+├── src/
+│ ├── configs/ # Chứa file cấu hình như cấu hình DB
+│ │ └── db.config.js
+│ ├── controllers/ # Chứa các controller cho các API
+│ │ ├── salesOrder.controller.js
+│ │ ├── inventory.controller.js
+│ │ └── productionPlan.controller.js
+│ ├── models/ # Chứa các mô hình Sequelize cho DB
+│ │ ├── salesOrder.model.js
+│ │ ├── inventory.model.js
+│ │ └── productionPlan.model.js
+│ ├── repositories/ # Xử lý nghiệp vụ với DB (repository pattern)
+│ │ ├── salesOrder.repository.js
+│ │ └── inventory.repository.js
+│ ├── routes/ # Khai báo route cho API
+│ │ ├── salesOrder.routes.js
+│ │ └── inventory.routes.js
+│ ├── services/ # Chứa các service xử lý logic nghiệp vụ
+│ │ ├── salesOrder.service.js
+│ │ └── inventory.service.js
+│ ├── swagger/ # Tích hợp Swagger để hiển thị API docs
+│ │ └── swagger.json
+│ ├── app.js # Khởi tạo Express app
+│ └── server.js # Kết nối DB và chạy server
+├── .env # File cấu hình môi trường
+├── package.json
+└── package-lock.json

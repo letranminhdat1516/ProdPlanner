@@ -1,0 +1,10 @@
+{
+    "development": {
+      "username": "sa",
+      "password": "12345",
+      "database": "ProductionPlanning",
+      "host": "127.0.0.1",
+      "dialect": "mssql"
+    }
+  }
+  
